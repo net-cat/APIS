@@ -81,6 +81,7 @@
         <div class="container" style="width: inherit">
         <form class="form-horizontal" role="form" data-toggle="validator">
         
+        <!--
         <h3>Extra Donations</h3>
         <div class="col-sm-11 col-sm-offset-1" style="padding-left:0px;padding-bottom:10px;">If you would like to make an extra gift to our annual charity, Frisky's, or to the convention, please enter it below.</div>
         <div class="form-group">
@@ -102,6 +103,9 @@
                 </div>
             </div>
         </div>
+        -->
+        <input type="hidden" id="donateCharity" value="0.0">
+        <input type="hidden" id="donateOrg" value="0.0">
 
 
 
@@ -210,7 +214,6 @@
             $("#checkout").removeAttr("disabled");
             },
                     "success": function (result, status) {
-                alert("A good happened.");
                         if (result.success) {
                 window.location = "{% url 'onsiteDone' %}";
                         } else {
