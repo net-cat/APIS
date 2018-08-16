@@ -1110,7 +1110,7 @@ def assignBadgeNumber(request):
 
     if badge_name is not None:
         try:
-            badge = Badge.objects.filter(badgeName__icontains=badge_name, event__name="Furthemore 2018").first()
+            badge = Badge.objects.filter(badgeName__icontains=badge_name, event__name="FA United 2018").first()
 
         except:
             return JsonResponse({'success' : False, 'reason' : 'Badge name search returned no results'})
@@ -1562,11 +1562,11 @@ def basicBadges(request):
               'firstName': badge.attendee.firstName.lower(), 'lastName': badge.attendee.lastName.lower(),
               'printed': badge.printed, 'discount': badge.getDiscount(),
               'assoc': badge.abandoned(), 'orderItems': getOptionsDict(badge.orderitem_set.all()) }
-             for badge in badges if badge.effectiveLevel() != None and badge.event.name == "Furthemore 2018"]
+             for badge in badges if badge.effectiveLevel() != None and badge.event.name == "FA United 2018"]
 
     staffdata = [{'firstName': s.attendee.firstName.lower(), 'lastName':s.attendee.lastName.lower(),
                   'title': s.title, 'id': s.id}
-                for s in staff if s.event.name == "Furthemore 2018"]
+                for s in staff if s.event.name == "FA United 2018"]
 
     for staff in staffdata:
         sbadge = Staff.objects.get(id=staff['id']).getBadge()

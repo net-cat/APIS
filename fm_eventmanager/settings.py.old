@@ -15,9 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-TEMPLATE_DIRS = (
-        BASE_DIR + '/templates/',
-)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -28,16 +25,15 @@ SECRET_KEY = '#4jb6($!lns7dm@0$%80q&sk2_d7(qy*f^$ky!4z@1c-gonv8_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ADMINS = [('Da Root', 'root@example.com'),]
-SERVER_EMAIL = "no-reply@example.com"
+ADMINS = [('Carissa Brittain', 'carissa.brittain@gmail.com'),]
+SERVER_EMAIL = "it_errors@furthemore.org"
 
-ALLOWED_HOSTS = ['locahost', '127.0.0.1', 'apis.example.com', '*']
+ALLOWED_HOSTS = ['dawningbrooke.net', 'locahost', '127.0.0.1', 'example.com']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'flat_responsive',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -97,11 +93,6 @@ DATABASES = {
         'PASSWORD': 'fauReg2018',
         'HOST': 'localhost',
         'PORT': '',
-        #'NAME': 'apis',
-        #'USER': 'apis',
-        #'PASSWORD': 'secret',
-        #'HOST': 'localhost',
-        #'PORT': '',
     }
 }
 
@@ -144,7 +135,7 @@ SITE_ID = 1
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/var/www/APIS/static/'
+STATIC_ROOT = '/root/projects/furthemore/static/'
 
 # Session Management
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
@@ -152,21 +143,9 @@ SESSION_COOKIE_AGE = 60*60  # 1hr
 
 # Sandbox values - DO NOT check in production ids
 AUTHNET_NAME = '426rwVfr3G47'
-AUTHNET_TRANSACTIONKEY = '399UTfznCVrsa224'
-
-# Sandbox values = DO NOT check in production ids
-SQUARE_APPLICATION_ID = 'sandbox-sq0idp-1a_zrseak3Van14Stv3c3w'
-SQUARE_ACCESS_TOKEN = 'sandbox-sq0atb-Nearskgf128592ksreeQ9A'
-SQUARE_LOCATION_ID = 'CBASEJrWL7cRwRMYgrDn6G8A70ogAQ'
-SQUARE_CURRENCY = 'USD'
+AUTHNET_TRANSACTIONKEY = '399UTfznCV7gz224'
 
 # Sandbox values - DO NOT check in production credentials
 EMAIL_HOST = 'smtp.mailgun.org'
-EMAIL_HOST_USER = 'postmaster@apis.example.com'
-EMAIL_HOST_PASSWORD = '470c8710296572192aebeafcafedead2-2b4c5a6c-8c58af2d'
-
-# Return channel for Android register application
-REGISTER_KEY = 'df14e4d5469e801dbc8e1df4eebd97b3'
-
-# Firebase/Pushy.me cloud-push API key
-CLOUD_MESSAGING_KEY = "AAA..."
+EMAIL_HOST_USER = 'postmaster@sandboxcdfc4543b9e84e0ea21d82a527e714fc.mailgun.org'
+EMAIL_HOST_PASSWORD = '8aee7562e054466c362ebd84e7227703'

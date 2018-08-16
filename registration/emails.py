@@ -21,14 +21,14 @@ def sendRegistrationEmail(order, email):
             msgTxt = render_to_string('registration/emails/registrationPayment.txt', data)
             msgHtml = render_to_string('registration/emails/registrationPayment.html', data)
             sendEmail("registration@furthemore.org", [email], 
-                 "Furthemore 2018 Registration Payment", msgTxt, msgHtml)
+                 "FA United 2018 Registration Payment", msgTxt, msgHtml)
         else: 
             # send regular emails to everyone else
             data = {'reference': order.reference, 'orderItem': oi}
             msgTxt = render_to_string('registration/emails/registration.txt', data)
             msgHtml = render_to_string('registration/emails/registration.html', data)
             sendEmail("registration@furthemore.org", [oi.badge.attendee.email], 
-                 "Furthemore 2018 Registration Confirmation", msgTxt, msgHtml)
+                 "FA United 2018 Registration Confirmation", msgTxt, msgHtml)
 
         # send vip notification if necessary
         if oi.priceLevel.emailVIP:
@@ -36,7 +36,7 @@ def sendRegistrationEmail(order, email):
             msgTxt = render_to_string('registration/emails/vipNotification.txt', data)
             msgHtml = render_to_string('registration/emails/vipNotification.html', data)
             sendEmail("registration@furthemore.org", [email for email in oi.priceLevel.emailVIPEmails.split(',')], 
-                 "Furthemore 2018 VIP Registration", msgTxt, msgHtml)
+                 "FA United 2018 VIP Registration", msgTxt, msgHtml)
 
 
 def sendUpgradePaymentEmail(attendee, order):
@@ -44,7 +44,7 @@ def sendUpgradePaymentEmail(attendee, order):
     orderItems = OrderItem.objects.filter(order=order)
     msgTxt = render_to_string('registration/emails/upgrade.txt', data)
     msgHtml = render_to_string('registration/emails/upgrade.html', data)
-    sendEmail("registration@furthemore.org", [attendee.email], "Furthemore 2018 Upgrade Payment", 
+    sendEmail("registration@furthemore.org", [attendee.email], "FA United 2018 Upgrade Payment", 
               msgTxt, msgHtml)
 
     for oi in orderItems:
@@ -53,7 +53,7 @@ def sendUpgradePaymentEmail(attendee, order):
             msgTxt = render_to_string('registration/emails/vipNotification.txt', data)
             msgHtml = render_to_string('registration/emails/vipNotification.html', data)
             sendEmail("registration@furthemore.org", [email for email in oi.priceLevel.emailVIPEmails.split(',')], 
-                 "Furthemore 2018 VIP Registration", msgTxt, msgHtml)
+                 "FA United 2018 VIP Registration", msgTxt, msgHtml)
 
 
 def sendStaffRegistrationEmail(orderId):
@@ -62,21 +62,21 @@ def sendStaffRegistrationEmail(orderId):
     data = {'reference': order.reference}
     msgTxt = render_to_string('registration/emails/staffRegistration.txt', data)
     msgHtml = render_to_string('registration/emails/staffRegistration.html', data)
-    sendEmail("registration@furthemore.org", [email], "Furthemore 2018 Staff Registration", 
+    sendEmail("registration@furthemore.org", [email], "FA United 2018 Staff Registration", 
               msgTxt, msgHtml)
 
 def sendStaffPromotionEmail(staff):
     data = {'registrationToken': staff.registrationToken}
     msgTxt = render_to_string('registration/emails/staffPromotion.txt', data)
     msgHtml = render_to_string('registration/emails/staffPromotion.html', data)
-    sendEmail("registration@furthemore.org", [staff.attendee.email], "Welcome to Furthemore Staff!", 
+    sendEmail("registration@furthemore.org", [staff.attendee.email], "Welcome to FA United Staff!", 
               msgTxt, msgHtml)
 
 def sendNewStaffEmail(token):
     data = {'registrationToken': token.token}
     msgTxt = render_to_string('registration/emails/newStaff.txt', data)
     msgHtml = render_to_string('registration/emails/newStaff.html', data)
-    sendEmail("registration@furthemore.org", [token.email], "Welcome to Furthemore Staff!", 
+    sendEmail("registration@furthemore.org", [token.email], "Welcome to FA United Staff!", 
               msgTxt, msgHtml)
 
 def sendDealerApplicationEmail(dealerId):
@@ -150,4 +150,4 @@ def sendEmail(replyAddress, toAddressList, subject, message, htmlMessage):
       reply_to=[replyAddress]
     )
     mailMessage.attach_alternative(htmlMessage, "text/html")
-    mailMessage.send()
+    #mailMessage.send()

@@ -28,7 +28,7 @@ Other Discount - {{dealer.discountReason}}: -${{dealer.discount}}
 Charity Donation: ${{order.charityDonation}}
 {% endif %}
 {% if order.orgDonation > 0 %}
-Furthemore Donation: ${{order.orgDonation}}
+FA United Donation: ${{order.orgDonation}}
 {% endif %}
 
 Total: ${{order.total}}
