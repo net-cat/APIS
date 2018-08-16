@@ -32,7 +32,7 @@ PRINT_MODE = 'pdf'
 
 # Platforms using the CUPS printing system (UNIX):
 unix = ['Linux', 'linux2', 'Darwin']
-wkhtmltopdf = '/usr/local/bin/wkhtmltopdf' #path to wkhtmltopdf binary
+wkhtmltopdf = ['/usr/bin/xvfb-run', '/usr/bin/wkhtmltopdf'] #path to wkhtmltopdf binary
 #TODO: Option to select native or builtin wkhtmltopdf
 
 #TODO: Determine whether to use ~/.taxidi/resources/ (config.ini in ~/.taxidi/)
@@ -137,7 +137,7 @@ class Printer:
         self.log.debug('Calling {0} with arguments <'.format(wkhtmltopdf))
         self.log.debug('{0} >'.format(args))
 
-        if args[0] != wkhtmltopdf: args.insert(0, wkhtmltopdf) #prepend program name
+        if args[0:len(wkhtmltopdf)] != wkhtmltopdf: args = wkhtmltopdf + args
 
         ret = subprocess.check_call(args)
         if ret != 0:
